@@ -1,0 +1,9 @@
+[10:32 AM] Jordan Smith (You): Before we dive into pricing, I want to understand the current workflow. Walk me through what happens when your reps finish a call today.
+[10:33 AM] Morgan Lee (Client): Honestly, it's messy. Reps type rough notes into Salesforce — maybe 40% of what was actually discussed. My managers have no visibility into what's really happening in calls, and coaching is just based on vibes.
+[10:35 AM] Priya Patel (Client): And we've been burned by tools before. The last platform we tried felt like it was built for enterprise — 9-month rollout, seat minimums, our ops team hated it.
+[10:37 AM] Jordan Smith (You): That's exactly why we built Scope2Pay differently. No seat minimums, you're live in under a week, and every call is auto-synced back to Salesforce with full context — not just what reps remember to type.
+[10:39 AM] Morgan Lee (Client): Okay, I'm listening. What would onboarding look like for a team of 22? And does this integrate with HubSpot too — we have a few holdouts on the SDR side.
+[10:41 AM] Jordan Smith (You): Yes — Scope2Pay is one of the few platforms that treats Salesforce and HubSpot equally. Reps keep using whichever CRM they're already in; Scope2Pay writes to both. We can usually get a team of 22 fully live inside 7 business days.
+[10:43 AM] Priya Patel (Client): What about security? We're SOC 2 Type II ourselves and our InfoSec team will want SSO, SCIM and an audit trail before they sign anything.
+[10:45 AM] Jordan Smith (You): We are fully SOC 2 Type II compliant. Let's agree on scope: We will deliver the Executive Dashboard UI Design at $7,500 and the Mobile App Client Experience at $5,000, with a $500 package discount, under Net 14 payment terms via PayPal.
+[10:47 AM] Morgan Lee (Client): That pricing works for us. Send over the invoice draft with the Net 14 terms and PayPal checkout, and we will approve it right away.

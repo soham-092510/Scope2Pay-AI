@@ -1,0 +1,107 @@
+erDiagram
+    User ||--o{ Client : owns
+    User ||--o{ Project : owns
+    User ||--o{ Transcript : owns
+    User ||--o{ Invoice : owns
+    User ||--o{ PaymentAttempt : records
+
+    Client ||--o{ Project : associates
+    Client ||--o{ Invoice : bills_to
+
+    Project ||--o{ Transcript : contains
+    Project ||--o{ Invoice : associates
+
+    Transcript ||--o{ AnalysisRun : analyzes
+    AnalysisRun ||--o{ Commitment : contains
+    AnalysisRun ||--o{ Invoice : drafts
+
+    Invoice ||--|{ InvoiceItem : has_items
+    Invoice ||--o{ PaymentAttempt : tracks
+
+    User {
+        string id PK
+        string email UK
+        string password_hash
+        string full_name
+        string company_name
+        datetime created_at
+    }
+
+    Client {
+        string id PK
+        string user_id FK
+        string name
+        string email
+        string company
+        string address
+        string currency
+    }
+
+    Transcript {
+        string id PK
+        string user_id FK
+        string project_id FK
+        string filename
+        string file_type
+        text content
+        datetime created_at
+    }
+
+    AnalysisRun {
+        string id PK
+        string transcript_id FK
+        string user_id FK
+        text result_json
+        float confidence
+        string status
+    }
+
+    Commitment {
+        string id PK
+        string analysis_id FK
+        string type
+        string title
+        decimal amount
+        text evidence_quote
+        string speaker
+        string timestamp
+        string status
+    }
+
+    Invoice {
+        string id PK
+        string user_id FK
+        string client_id FK
+        string invoice_number UK
+        string issue_date
+        string due_date
+        decimal subtotal
+        decimal tax_rate
+        decimal tax_amount
+        decimal discount_amount
+        decimal total_amount
+        string status
+        string paypal_order_id
+        datetime paid_at
+    }
+
+    InvoiceItem {
+        string id PK
+        string invoice_id FK
+        string description
+        decimal quantity
+        decimal unit_price
+        decimal total_amount
+    }
+
+    PaymentAttempt {
+        string id PK
+        string invoice_id FK
+        string user_id FK
+        string paypal_order_id
+        string paypal_capture_id
+        string status
+        decimal amount
+        string payer_email
+        datetime created_at
+    }

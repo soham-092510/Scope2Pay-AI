@@ -1,0 +1,6 @@
+[11:00 AM] Jordan Smith: Hi David, let's talk about the design updates.
+[11:02 AM] David Miller: We want some custom dashboards and maybe some reports, but our budget isn't approved yet by finance.
+[11:05 AM] Jordan Smith: Can we do somewhere around $4,000 to $6,000?
+[11:07 AM] David Miller: Maybe, but we might only have $3,000 left this quarter. Also we normally pay on Net 60, not Net 14.
+[11:10 AM] Jordan Smith: Net 60 is difficult for us. We'll need at least 50% upfront before kickoff.
+[11:12 AM] David Miller: Let me get back to you after discussing with our CFO next week.

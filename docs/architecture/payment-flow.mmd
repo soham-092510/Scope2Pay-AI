@@ -1,0 +1,32 @@
+sequenceDiagram
+    autonumber
+    actor User as Freelancer / Consultant
+    participant UI as Scope2Pay Frontend
+    participant API as FastAPI Backend
+    participant PayPal as PayPal Sandbox API
+    actor Client as Customer / Buyer
+
+    User->>UI: Reviews & Clicks "Send Invoice & Pay"
+    UI->>API: POST /api/v1/invoices/:id/approve
+    API-->>UI: Invoice Status: approved
+
+    UI->>API: POST /api/v1/payments/create-order
+    API->>API: Compute server-side Decimal amount & line items
+    API->>PayPal: POST /v1/oauth2/token (Client ID + Secret)
+    PayPal-->>API: Bearer Access Token
+    API->>PayPal: POST /v2/checkout/orders (intent=CAPTURE, purchase_units)
+    PayPal-->>API: Order Created (ID: ORDER-XXX, Status: CREATED)
+    API->>API: Store PaymentAttempt(status="CREATED")
+    API-->>UI: Return order_id & approve_url
+
+    UI->>Client: Present PayPal Checkout Interface
+    Client->>UI: Customer Authorizes Payment
+    UI->>API: POST /api/v1/payments/capture-order
+    API->>API: Verify order ownership & expected total
+    API->>PayPal: POST /v2/checkout/orders/:id/capture
+    PayPal-->>API: Capture Response (ID: CAP-XXX, Status: COMPLETED)
+    API->>API: Update Invoice(status="paid", paid_at=NOW)
+    API->>API: Record PaymentAttempt(status="COMPLETED")
+    API->>API: Write Transactional AuditLog
+    API-->>UI: Return Verified Capture Receipt
+    UI-->>User: Trigger Confetti & Update Dashboard Metrics

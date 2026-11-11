@@ -1,0 +1,23 @@
+graph LR
+    Input["Client Conversation / Meeting Transcript"] --> Preprocess["Preprocessing & Timestamp Parsing"]
+    Preprocess --> FormatDetect{"File Format"}
+    FormatDetect -->|"SRT / VTT"| SubtitleParser["Subtitle & Speaker Extractor"]
+    FormatDetect -->|"PDF / DOCX"| DocParser["Rich Document Parser"]
+    FormatDetect -->|"TXT / MD / Paste"| TextParser["Text Stream Normalizer"]
+
+    SubtitleParser --> AI_Prompt["Deterministic Financial Prompt Assembly"]
+    DocParser --> AI_Prompt
+    TextParser --> AI_Prompt
+
+    AI_Prompt --> LLM{"Gemini API Configured?"}
+    LLM -->|"Yes"| GeminiCall["Call Google Gemini API (Structured JSON)"]
+    LLM -->|"Fallback"| HeuristicEngine["Intelligent Deterministic Extraction Engine"]
+
+    GeminiCall --> Validation["Pydantic v2 Schema & Evidence Validation"]
+    HeuristicEngine --> Validation
+
+    Validation --> Commitments["Extracted Deliverables & Verbatim Quotes"]
+    Validation --> Ambiguity["Missing Information & Contradictions Check"]
+    Validation --> InvoiceDraft["One-Click Editable Invoice Preparation"]
+
+    InvoiceDraft --> HumanReview["Human Review & Explicit Approval Gate"]

@@ -1,0 +1,33 @@
+graph TD
+    User["User / Freelancer / Consultant"] -->|"Interacts via Web Browser"| Frontend["React + TypeScript + Tailwind CSS Frontend"]
+
+    subgraph Frontend_Layer["Frontend Presentation (Scope2Pay UI)"]
+        Dashboard["Overview Dashboard (OripioFin style)"]
+        TranscriptStudio["Transcript Studio & Audio Waveform (Rafiki style)"]
+        InvoiceBuilder["Live Dual-Column Invoice Builder (Image 3 style)"]
+        Transactions["Transactions & Data Management (Orbix style)"]
+        PaymentCenter["PayPal Checkout & Capture Center"]
+    end
+
+    Frontend -->|"REST APIs / JSON / JWT"| Gateway["FastAPI Monolithic Application Gateway"]
+
+    subgraph Backend_Services["FastAPI Application Services (/api/v1)"]
+        AuthService["Auth & Security (JWT, Argon2id)"]
+        DocService["Document Engine (PDF, DOCX, SRT, VTT, TXT)"]
+        AIService["AI Engine (Gemini API + Deterministic Heuristics)"]
+        InvoiceService["Invoice Engine (Decimal Monetary Precision)"]
+        PayPalService["PayPal Service (Orders API v2 & Captures)"]
+        AuditService["Transactional Audit & Reconciliation"]
+    end
+
+    Gateway --> AuthService
+    Gateway --> DocService
+    Gateway --> AIService
+    Gateway --> InvoiceService
+    Gateway --> PayPalService
+    Gateway --> AuditService
+
+    AIService -->|"Generative LLM Schema Prompting"| Gemini["Google Gemini 1.5/2.0 API"]
+    PayPalService -->|"OAuth 2.0 & Orders v2"| PayPal["PayPal Developer Sandbox API"]
+
+    Backend_Services -->|"SQLAlchemy ORM"| DB[("Relational Database (SQLite / Managed PostgreSQL)")]

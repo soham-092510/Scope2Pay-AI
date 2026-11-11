@@ -1,0 +1,5 @@
+[02:00 PM] Jordan Smith: Thanks for joining, Elena. Let's formalize the architecture consulting scope for GlobalLink.
+[02:02 PM] Elena Rostova: We need 3 main phases: Cloud Infrastructure Migration, Database Partitioning, and Multi-region Failover testing.
+[02:05 PM] Jordan Smith: Understood. Cloud Migration will be $8,000, Database Partitioning will be $6,500, and Failover Verification is $3,500. Total engagement is $18,000 USD.
+[02:08 PM] Elena Rostova: We can agree to that under milestone disbursements. 50% upfront via PayPal sandbox invoice, and 50% upon signoff.
+[02:10 PM] Jordan Smith: Agreed. Terms are Net 14 from milestone completion.
